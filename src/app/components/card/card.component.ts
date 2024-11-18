@@ -70,6 +70,9 @@ export class CardComponent implements OnInit, OnChanges, OnDestroy {
         { ...this.card, conteudo: this.content, titulo: this.title };
     this.action.emit({ action, card });
     this.reset();
+    if (action === ButtonAction.CREATE) {
+        this.edit = !this.edit;
+    }
   }
 
   public reset(): void {

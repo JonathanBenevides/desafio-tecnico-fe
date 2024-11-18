@@ -104,6 +104,7 @@ describe('CardComponent', () => {
 
   it('should test reset 1st case', () => {
     component.card = card;
+    component.edit = true;
     component.stage = KanbamAction.NEW;
     component.form.get('titulo')?.setValue(card.titulo);
     component.form.get('conteudo')?.setValue(card.conteudo);
@@ -120,6 +121,7 @@ describe('CardComponent', () => {
 
   it('should test reset 2nd case', () => {
     component.card = card;
+    component.edit = true;
     component.stage = KanbamAction.TO_DO;
     component.form.get('titulo')?.setValue(card.titulo);
     component.form.get('conteudo')?.setValue(card.conteudo);
@@ -132,5 +134,10 @@ describe('CardComponent', () => {
       action: ButtonAction.CREATE
     });
     expect(component.edit).toBe(false);
+  });
+
+  it('should test get title with no value', () => {
+    component.form.get('titulo')?.setValue(null);
+    expect(component.title).toBe('');
   });
 });
